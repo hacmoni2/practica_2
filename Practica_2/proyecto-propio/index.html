@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Préstamos - ESCOM IIA</title>
+    <style>
+        :root {
+            --ipn-guinda: #6b1426;
+            --ipn-guinda-dark: #510f1c;
+            --bg-color: #f8fafc;
+            --text-color: #2d3748;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        header {
+            background-color: var(--ipn-guinda);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-brand {
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-nav {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.6);
+            padding: 0.4rem 0.9rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .btn-nav.primary {
+            background: white;
+            color: var(--ipn-guinda);
+            border-color: white;
+            font-weight: 600;
+        }
+
+        .btn-nav:hover {
+            opacity: 0.85;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(107, 20, 38, 0.9), rgba(81, 15, 28, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%236b1426"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--ipn-guinda);
+            margin-bottom: 2rem;
+        }
+
+        /* Departments Grid (Los 3 departamentos principales) */
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .dept-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .dept-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .dept-card h3 {
+            font-size: 1.25rem;
+            color: var(--ipn-guinda);
+            margin-bottom: 0.5rem;
+        }
+
+        .dept-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .dept-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: #4a5568;
+        }
+
+        .dept-list li {
+            padding: 0.25rem 0;
+            border-bottom: 1px dashed #edf2f7;
+        }
+
+        .btn-explore {
+            background-color: var(--ipn-guinda);
+            color: white;
+            border: none;
+            padding: 0.6rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-explore:hover {
+            background-color: var(--ipn-guinda-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2d3748;
+            color: #a0aec0;
+            text-align: center;
+            padding: 1.25rem;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Navegación con Registro / Login -->
+    <header>
+        <div class="nav-brand">IPN - ESCOM | IIA Préstamos</div>
+        <div class="auth-buttons">
+            <button class="btn-nav">Iniciar Sesión</button>
+            <button class="btn-nav primary">Registrarse</button>
+        </div>
+    </header>
+
+    <!-- Portada / Hero -->
+    <section class="hero">
+        <h1>Sistema Automatizado de Préstamos ESCOM</h1>
+        <p>Control institucional de recursos para la comunidad politécnica de Ingeniería en Inteligencia Artificial.</p>
+    </section>
+
+    <!-- Contenido Principal: Los 3 Departamentos -->
+    <main>
+        <h2 class="section-title">Departamentos de Recursos del Campus</h2>
+
+        <div class="dept-grid">
+            
+            <!-- Departamento 1: Electrónica -->
+            <div class="dept-card">
+                <div>
+                    <div class="dept-icon">⚡</div>
+                    <h3>Electrónica y Hardware</h3>
+                    <p>Equipamiento tecnológico especializado para prácticas, prototipos e investigación en Inteligencia Artificial y robótica.</p>
+                    <ul class="dept-list">
+                        <li>• Tarjetas de desarrollo (Jetson Nano, ESP32, Arduino)</li>
+                        <li>• Sensores y módulos de visión artificial</li>
+                        <li>• Instrumentación (Multímetros, osciloscopios)</li>
+                    </ul>
+                </div>
+                <a href="#" class="btn-explore">Ver Catálogo de Electrónica</a>
+            </div>
+
+            <!-- Departamento 2: Biblioteca -->
+            <div class="dept-card">
+                <div>
+                    <div class="dept-icon">📚</div>
+                    <h3>Biblioteca y Consulta</h3>
+                    <p>Acervo bibliográfico formal y literatura especializada en ciencias de la computación, matemáticas y algoritmos.</p>
+                    <ul class="dept-list">
+                        <li>• Libros de texto y consulta general</li>
+                        <li>• Apuntes y guías académicas departamentales</li>
+                        <li>• Materiales de referencia técnica</li>
+                    </ul>
+                </div>
+                <a href="#" class="btn-explore">Ver Catálogo de Biblioteca</a>
+            </div>
+
+            <!-- Departamento 3: Deportes -->
+            <div class="dept-card">
+                <div>
+                    <div class="dept-icon">⚽</div>
+                    <h3>Material Deportivo</h3>
+                    <p>Artículos recreativos y deportivos para fomentar el bienestar y la actividad física dentro de las instalaciones.</p>
+                    <ul class="dept-list">
+                        <li>• Balones (Fútbol, Básquetbol, Voleibol)</li>
+                        <li>• Redes y accesorios deportivos</li>
+                        <li>• Material de entrenamiento físico</li>
+                    </ul>
+                </div>
+                <a href="#" class="btn-explore">Ver Catálogo de Deportes</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        Instituto Politécnico Nacional | Escuela Superior de Cómputo — IIA | Gestión de Recursos 2026
+    </footer>
+
+</body>
+</html>
